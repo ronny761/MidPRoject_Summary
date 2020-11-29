@@ -96,7 +96,7 @@
     <ListView
         android:divider="@drawable/divider"
         android:dividerHeight="4px"
-        android:id="@+id/lst"
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
 
