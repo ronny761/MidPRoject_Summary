@@ -19,15 +19,14 @@ public class PokemonAdapter extends BaseAdapter {
         this.context = context;
     }
 
-
     @Override
     public int getCount() {
-        return 0;
+        return pokemon_list.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return pokemon_list.get(i);
     }
 
     @Override
