@@ -25,7 +25,7 @@ public class PokemonAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Pokemon getItem(int i) {
         return pokemon_list.get(i);
     }
 

@@ -94,12 +94,11 @@
     </LinearLayout>
 
     <ListView
-        android:divider="@drawable/divider"
-        android:dividerHeight="4px"
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
-
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:dividerHeight="4px"></ListView>
 
 
 </LinearLayout>
