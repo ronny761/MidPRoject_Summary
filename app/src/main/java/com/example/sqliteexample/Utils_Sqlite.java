@@ -18,8 +18,8 @@ class Utils_Sqlite {
 
 
     public static void createDB(SQLiteDatabase db) {
-        // db.execSQL("create table if not exists tbl_pokemon(pokemon_name text,
-        // pokemon_type text, pokemon_pic int)");
+       /* db.execSQL("create table if not exists tbl_pokemon(pokemon_name text,
+        pokemon_type text, pokemon_pic int)");*/
         db.execSQL("create table if not exists " +
                 TABLE_POKEMON_NAME + "(" + TABLE_POKEMON_COL_NAME + " text, " +
                 TABLE_POKEMON_COL_TYPE + " text, " +
