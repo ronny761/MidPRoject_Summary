@@ -17,10 +17,10 @@ public class DelteOrUpdate extends AppCompatActivity implements View.OnClickList
 
     SQLiteDatabase db;
 
-    EditText et_name,et_type,ev3;
+    EditText et_name,et_type;
     ImageView iv_pic;
 
-    Button bt1, bt2;
+    Button btnUpdate, bt2;
 
 
     @Override
@@ -29,31 +29,30 @@ public class DelteOrUpdate extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_delte_or_update);
 
         Intent intent = getIntent();
-        String pokemonName =intent.getExtras().getString("pokemonName");
-
-
-        //phase1  - open database
-        db = openOrCreateDatabase(Utils_Sqlite.DATABASE_NAME, Context.MODE_PRIVATE, null);
-
-        Cursor c = db.rawQuery("SELECT * FROM "+Utils_Sqlite.TABLE_POKEMON_NAME+
-                " WHERE "+Utils_Sqlite.TABLE_POKEMON_COL_NAME+"='"+pokemonName+"'",null);
-
-
-        c.moveToFirst();
+        String name = intent.getExtras().getString("pokemonName");
 
         et_name=findViewById(R.id.name);
         et_type=findViewById(R.id.edit_type);
         iv_pic=findViewById(R.id.editPic);
 
+        //phase1  - open database
+        db = openOrCreateDatabase(Utils_Sqlite.DATABASE_NAME, Context.MODE_PRIVATE, null);
+
+        //extract data from table by name
+        Cursor c = db.rawQuery("select * from "+Utils_Sqlite.TABLE_POKEMON_NAME+
+                " where "+Utils_Sqlite.TABLE_POKEMON_COL_NAME+"='"+name+"'",null);
+        c.moveToFirst();
+
+
+
        et_name.setText(c.getString(0));
        et_type.setText(c.getString(1));
-       ev3.setText(c.getString(2));
-       //ev4.setText(c.getString(3));
+       //iv_pic.setImageDrawable(c.getInt(2));
 
-        bt1=findViewById(R.id.btdel);
-        bt2=findViewById(R.id.btupdate);
+        btnUpdate=findViewById(R.id.btnUpdate);
+        bt2=findViewById(R.id.btn_delete);
 
-        bt1.setOnClickListener(this);
+        btnUpdate.setOnClickListener(this);
         bt2.setOnClickListener(this);
 
     }
@@ -61,17 +60,22 @@ public class DelteOrUpdate extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
-        if(bt1==view)
+        if(btnUpdate==view)
+        {
+            db.execSQL("UPDATE "+Utils_Sqlite.TABLE_POKEMON_NAME+" SET "+Utils_Sqlite.TABLE_POKEMON_COL_NAME+" = '"+
+                    et_name.getText().toString()+"' WHERE "+Utils_Sqlite.TABLE_POKEMON_COL_TYPE+
+                    " = '"+et_type.getText().toString()+"'");
+            Toast.makeText(this, "update successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(DelteOrUpdate.this, MainActivity.class));
+            finish();
+        }
+
+        if(bt2==view)
         {
             /*db.execSQL("DELETE FROM students WHERE id='"+ev1.getText().toString()+"'");
             Intent refresh = new Intent(this, );
             startActivity(refresh);
             finish();*/
-        }
-
-        if(bt2==view)
-        {
-            
         }
 
     }

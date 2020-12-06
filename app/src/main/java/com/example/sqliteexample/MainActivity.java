@@ -59,22 +59,17 @@ public class MainActivity extends AppCompatActivity {
 
         //phase 2 - create tables
         //String create_query_notRecommended= "create table if not exists tbl_pokemon(pokemon_name text, type text, pic int)";
-        String create_query = "create table if not exists "+
-                Utils_Sqlite.TABLE_POKEMON_NAME+"("+Utils_Sqlite.TABLE_POKEMON_COL_NAME+" text, "+
-                Utils_Sqlite.TABLE_POKEMON_COL_TYPE+" text,"+Utils_Sqlite.TABLE_POKEMON_COL_PIC+" int)";
+        String create_query = "create table if not exists "+Utils_Sqlite.TABLE_POKEMON_NAME+"("+Utils_Sqlite.TABLE_POKEMON_COL_NAME+" text, "+ Utils_Sqlite.TABLE_POKEMON_COL_TYPE+" text,"+Utils_Sqlite.TABLE_POKEMON_COL_PIC+" int)";
         db.execSQL(create_query);
 
-        String delete_query = "DELETE FROM tbl_pokemons";
-        db.execSQL(delete_query);
+
+
         //phase 2 - insert data into tables
         //db.execSQL("INSERT INTO tbl_pokemons VALUES ('gengar', 'electricity','"+R.drawable.gengar+"')");
-        String insert_query = "insert into "+Utils_Sqlite.TABLE_POKEMON_NAME+" values('"+pk1.getName()+
-                "', '"+pk1.getType()+"', '"+pk1.getPic()+"')";
+        String insert_query = "insert into "+Utils_Sqlite.TABLE_POKEMON_NAME+" values('"+pk1.getName()+"', '"+pk1.getType()+"', '"+pk1.getPic()+"')";
         db.execSQL(insert_query);
 
 
 
-        //slkdlksad
-            
     }
 }

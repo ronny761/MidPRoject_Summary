@@ -63,15 +63,15 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Delete"
-            android:id="@+id/btdel"
+            android:text="update"
+            android:id="@+id/btnUpdate"
             android:layout_weight="50"
             />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update"
-            android:id="@+id/btupdate"
+            android:text="delete"
+            android:id="@+id/btn_delete"
             android:layout_weight="50"
             />
     </LinearLayout>
